@@ -27,22 +27,10 @@ class LandingPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black,
-<<<<<<< HEAD
         title: SizedBox(
           width: 200,
             child: Image.asset('assets/images/cengreen-logo.png'),
         ),
-        // Text(
-        //   'Cengreen',
-        //   style: TextStyle(color: Colors.white),
-        // ),
-
-=======
-        title: Text(
-          'Cengreen',
-          style: TextStyle(color: Colors.white),
-        ),
->>>>>>> origin/master
         actions: [
           TextButton(
             onPressed: () {},
