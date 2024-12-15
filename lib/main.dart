@@ -26,7 +26,8 @@ class LandingPage extends StatelessWidget {
         backgroundColor: Colors.black,
         title: SizedBox(
           width: 200,
-            child: Image.asset('assets/images/cengreen-logo.png')),
+            child: Image.asset('assets/images/cengreen-logo.png'),
+        ),
         // Text(
         //   'Cengreen',
         //   style: TextStyle(color: Colors.white),
