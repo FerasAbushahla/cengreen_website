@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 void main() {
   runApp(CengreenApp());
@@ -23,10 +24,14 @@ class LandingPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black,
-        title: Text(
-          'Cengreen',
-          style: TextStyle(color: Colors.white),
-        ),
+        title: SizedBox(
+          width: 200,
+            child: Image.asset('assets/images/cengreen-logo.png')),
+        // Text(
+        //   'Cengreen',
+        //   style: TextStyle(color: Colors.white),
+        // ),
+
         actions: [
           TextButton(
             onPressed: () {},
