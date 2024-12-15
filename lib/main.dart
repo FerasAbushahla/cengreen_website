@@ -1,8 +1,4 @@
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
-import 'package:flutter_svg/flutter_svg.dart';
-=======
->>>>>>> origin/master
 
 void main() {
   runApp(CengreenApp());
