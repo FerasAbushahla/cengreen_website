@@ -1,37 +1,31 @@
-name: Deploy Flutter Web
+name: Deploy Flutter Web to GitHub Pages
 
-# Events that trigger the workflow
 on:
   push:
     branches:
-      - main # Trigger on pushes to the main branch
-  workflow_dispatch: # Allow manual triggering of the workflow
+      - master # Trigger on pushes to the main branch
 
-# Define jobs
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Checkout the repository
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - name: Checkout Code
+        uses: actions/checkout@v2
 
-      # Step 2: Set up Flutter
-      - name: Set up Flutter
+      - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: 'stable'
+          flutter-version: "3.27.0"
 
-      # Step 3: Build the Flutter web app
+      - name: Get Flutter Dependencies
+        run: flutter pub get
+
       - name: Build Flutter Web
-        run: flutter build web
+        run: flutter build web --release
 
-      # Step 4: Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-#          external_repository: FerasAbushahla/cengreen_website
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: build/web
-
+          publish_dir: ./build/web
