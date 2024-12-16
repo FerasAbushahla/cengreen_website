@@ -1,35 +1,21 @@
-name: Deploy Flutter Web to GitHub Pages
-
-on:
-  push:
-    branches:
-      - master # Trigger on pushes to the main branch
-
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
-
     steps:
-      - uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GH_PAGES_TOKEN }}
-      
-      - name: Checkout Code
-        uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-      - name: Setup Flutter
+      - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: "3.27.0"
-
-      - name: Get Flutter Dependencies
-        run: flutter pub get
+          flutter-version: 'stable'
 
       - name: Build Flutter Web
-        run: flutter build web --release
+        run: flutter build web
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
+          external_repository: FerasAbushahla/cengreen_website
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build/web
+          publish_dir: build/web
