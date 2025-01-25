@@ -1,5 +1,4 @@
-import 'package:cengreen_website/ui/desktopLayout.dart';
-import 'package:cengreen_website/ui/mobileLayout.dart';
+import 'package:cengreen_website/router.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -14,19 +13,20 @@ class CengreenApp extends StatelessWidget {
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.black
       ),
-      home: _buildResponsiveLayout(context),
+      initialRoute: '/',
+      onGenerateRoute: AppRouter.generateRoute,
     );
   }
 }
 
-Widget _buildResponsiveLayout(BuildContext context) {
-  return LayoutBuilder(
-    builder: (context, constraints) {
-      if (constraints.maxWidth < 600) {
-        return Mobilelayout();
-      } else {
-        return DesktopLayout();
-      }
-    },
-  );
-}
+// Widget _buildResponsiveLayout(BuildContext context) {
+//   return LayoutBuilder(
+//     builder: (context, constraints) {
+//       if (constraints.maxWidth < 600) {
+//         return Mobilelayout();
+//       } else {
+//         return DesktopLayout();
+//       }
+//     },
+//   );
+// }
