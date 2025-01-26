@@ -4,162 +4,114 @@ class DesktopServices extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
         backgroundColor: Colors.black,
-        title: SizedBox(
-          width: 200,
-          child: Padding(
-            padding: const EdgeInsets.all(24.0),
-            child: Image.asset('assets/images/cengreen-logo.png'),
-          ),
-        ),
-        actions: [
-          TextButton(
-            onPressed: () {},
-            child: Text('Home', style: TextStyle(color: Colors.white)),
-          ),
-          TextButton(
-            onPressed: () {},
-            child: Text('Services', style: TextStyle(color: Colors.white)),
-          ),
-          TextButton(
-            onPressed: () {},
-            child: Text('Contact', style: TextStyle(color: Colors.white)),
-          ),
-        ],
-      ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Text(
-                'Services Overview',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                ),
-                textAlign: TextAlign.center,
-              ),
-              SizedBox(height: 16),
-              _buildRow1(context),
-              SizedBox(height: 16),
-              _buildRow2(context),
-              SizedBox(height: 16),
-              _buildRow3(context),
-              SizedBox(height: 16),
-              Container(
-                color: Colors.black,
-                padding: const EdgeInsets.all(16.0),
-                child: Text(
-                  '© 2025 Cengreen. All rights reserved.',
-                  style: TextStyle(color: Colors.white, fontSize: 14),
-                  textAlign: TextAlign.center,
-                ),
-              ),
-            ],
-          ),
+        title: Text(
+          'Services Overview',
+          style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
         ),
       ),
-    );
-  }
-
-  Widget _buildRow1(BuildContext context) {
-    return Row(
+      body:SingleChildScrollView(
+    child: Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Expanded(
-          flex: 2,
-          child: _buildServiceCard(
-            context,
-            'IT Solutions for Businesses',
-            'Explore services',
-            Icons.computer,
-            'assets/images/it_solutions.jpg',
-            'Featured',
-          ),
-        ),
-        SizedBox(width: 16),
-        Expanded(
-          flex: 1,
-          child: _buildImagePlaceholder('assets/images/service_placeholder.jpg'),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildRow2(BuildContext context) {
-    return Row(
-      children: [
-        Expanded(
-          child: _buildServiceCard(
-            context,
-            'Mobile App Development',
-            'View details',
-            Icons.phone_android,
-            'assets/images/mobile_development.jpg',
-          ),
-        ),
-        SizedBox(width: 16),
-        Expanded(
-          child: _buildServiceCard(
-            context,
-            'Testing and Debugging',
-            'View details',
-            Icons.bug_report,
-            'assets/images/testing.jpg',
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildRow3(BuildContext context) {
-    return Row(
-      children: [
-        Expanded(
-          flex: 1,
-          child: _buildImagePlaceholder('assets/images/service_placeholder.jpg'),
-        ),
-        SizedBox(width: 16),
-        Expanded(
-          flex: 2,
-          child: _buildServiceCard(
-            context,
-            'Data Security Solutions',
-            'View details',
-            Icons.security,
-            'assets/images/data_security.jpg',
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildImagePlaceholder(String imagePath) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.grey[850],
-        borderRadius: BorderRadius.circular(16.0),
-      ),
-      child: Column(
-        children: [
-          Image.asset(
-            imagePath,
-            fit: BoxFit.cover,
-            height: 120,
-            width: double.infinity,
-          ),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Text(
-              'Placeholder for service details',
-              style: TextStyle(
-                color: Colors.white,
-              ),
-              textAlign: TextAlign.center,
+        Padding(
+          padding: const EdgeInsets.only(top: 16.0, bottom: 8.0),
+          child: Text(
+            'Services Overview',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 28,
+              fontWeight: FontWeight.bold,
             ),
+          ),
+        ),
+        SizedBox(height: 16),
+        _buildRow(
+          leftFlex: 2,
+          rightFlex: 3,
+          leftChild: _buildServiceCard(
+            context,
+            title: 'Software Development',
+            description: 'IT Solutions for businesses',
+            buttonText: 'Explore services',
+          ),
+          rightChild: _buildImageCard(
+            imagePath: 'assets/images/office_image.png',
+          ),
+        ),
+        _buildRow(
+          leftFlex: 3,
+          rightFlex: 2,
+          leftChild: _buildImageCard(
+            imagePath: 'assets/images/office_image.png',
+          ),
+          rightChild: _buildServiceCard(
+            context,
+            title: 'Mobile App Development',
+            description: 'Develop custom apps',
+            buttonText: 'View details',
+          ),
+        ),
+        _buildRow(
+          leftFlex: 2,
+          rightFlex: 3,
+          leftChild: _buildServiceCard(
+            context,
+            title: 'Quality Assurance',
+            description: 'Testing and debugging',
+            buttonText: 'View details',
+          ),
+          rightChild: _buildImageCard(
+            imagePath: 'assets/images/office_image.png',
+          ),
+        ),
+        _buildRow(
+          leftFlex: 3,
+          rightFlex: 2,
+          leftChild: _buildImageCard(
+            imagePath: 'assets/images/office_image.png',
+          ),
+          rightChild: _buildServiceCard(
+            context,
+            title: 'Cloud Services',
+            description: 'Data Security Solutions',
+            buttonText: 'View details',
+          ),
+        ),
+        SizedBox(height: 32),
+        Center(
+          child: Text(
+            '© 2025 Cengreen. All rights reserved.',
+            style: TextStyle(color: Colors.white54, fontSize: 14),
+            textAlign: TextAlign.center,
+          ),
+        ),
+        SizedBox(height: 16),
+      ],
+    ),
+    ),
+    );
+  }
+
+  Widget _buildRow({required Widget leftChild, required Widget rightChild,required int leftFlex,
+    required int rightFlex,}) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 16.0),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Expanded(
+            flex: leftFlex,
+            child: leftChild,
+          ),
+          SizedBox(
+            width: 30,
+          ),
+          Expanded(
+            flex: rightFlex,
+              child: rightChild,
           ),
         ],
       ),
@@ -167,77 +119,71 @@ class DesktopServices extends StatelessWidget {
   }
 
   Widget _buildServiceCard(
-      BuildContext context,
-      String title,
-      String buttonText,
-      IconData icon,
-      String imagePath, [
-        String? badge,
-      ]) {
+      BuildContext context, {
+        required String title,
+        required String description,
+        required String buttonText,
+      }) {
     return Container(
+      height: 200,
       decoration: BoxDecoration(
         color: Colors.grey[850],
-        borderRadius: BorderRadius.circular(16.0),
+        borderRadius: BorderRadius.circular(24.0),
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          if (badge != null)
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
-              decoration: BoxDecoration(
-                color: Colors.orange,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(16.0),
-                  bottomRight: Radius.circular(16.0),
-                ),
-              ),
-              child: Text(
-                badge,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 12.0,
-                ),
+      child: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Text(
+              title,
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
               ),
             ),
-          Image.asset(
-            imagePath,
-            fit: BoxFit.cover,
-            height: 120,
-            width: double.infinity,
-          ),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  title,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                SizedBox(height: 8.0),
-                ElevatedButton.icon(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.blue,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8.0),
-                    ),
-                  ),
-                  icon: Icon(icon, size: 16),
-                  label: Text(buttonText),
-                ),
-              ],
+            SizedBox(height: 8),
+            Text(
+              description,
+              style: TextStyle(color: Colors.white70, fontSize: 14),
             ),
-          ),
-        ],
+            SizedBox(height: 20.0),
+            ElevatedButton(
+              onPressed: () {},
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.blue,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
+              ),
+              child: Text(buttonText),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildImageCard({required String imagePath}) {
+    return Container(
+      height: 200,
+      decoration: BoxDecoration(
+        color: Colors.grey[850],
+        borderRadius: BorderRadius.circular(24.0),
+      ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(24.0),
+        child: Image.asset(
+          imagePath,
+          fit: BoxFit.cover,
+          // height: ,
+          width: double.infinity,
+        ),
       ),
     );
   }
 }
+
 

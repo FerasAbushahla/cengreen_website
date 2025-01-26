@@ -188,7 +188,7 @@ class _DesktopLayoutState extends State<DesktopHome> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            '© 2024 Cengreen. All rights reserved.',
+                            '© 2025 Cengreen. All rights reserved.',
                             style: TextStyle(color: Colors.white, fontSize: 14),
                           ),
                           Row(

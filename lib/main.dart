@@ -13,7 +13,7 @@ class CengreenApp extends StatelessWidget {
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.black
       ),
-      initialRoute: '/',
+      initialRoute: '/services',
       onGenerateRoute: AppRouter.generateRoute,
     );
   }
